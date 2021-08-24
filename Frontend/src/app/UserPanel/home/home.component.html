@@ -1,0 +1,200 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <a class="navbar-brand" style="color:white;">Employee Manager</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+            <a class="nav-link" (click)="onOpenModal(null, 'add')">Add Employee <span class="sr-only">(current)</span></a>
+         </li>
+      </ul>
+   </div>
+   <button class="btn btn-danger navbar-btn" (click)="onLogout()">Logout</button>
+
+ </nav>
+<div class="container" id="main-container">
+
+   <div class="row">
+      <div *ngFor="let employee of employees" class="col-md-6 col-xl-3">
+         <div class="card m-b-30">
+            <div class="card-body row">
+               <div class="col-6 card-title align-self-center mb-0">
+                  <h5>{{employee?.firstName}} {{employee?.lastName}}</h5>
+                  <p class="m-0">{{employee?.position}}</p>
+               </div>
+            </div>
+            <ul class="list-group list-group-flush">
+               <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email: {{employee?.email}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phoneNo}}</li>
+            </ul>
+            <div class="card-body">
+               <div class="float-right btn-group btn-group-sm">
+                  <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top"
+                     data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                  <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top"
+                     data-original-title="Delete"><i class="fa fa-times"></i></a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+  
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img  id="bg1"  style="width:100%;">
+        </div>
+      </div>
+    </div>
+
+   <!-- Add Employee Modal -->
+   <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="addEmployeeModalLabel">Add Employee</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form #addForm="ngForm" (ngSubmit)="onAddEmloyee(addForm)">
+                  <div class="form-group">
+                     <label for="firstName">Name<span>*</span></label>
+                     <div>
+                         <input type="text" name="lastName" ngModel id="lastName" placeholder="Last Name" class="form-control">
+                         <input type="text"  name="firstName"  ngModel id="firstName" placeholder="First Name" class="form-control" required>
+                           <select class="form-control" id="title"  name="title" ngModel required>
+                               <option>---title---</option>
+                               <option>Mr</option>
+                               <option>Miss</option>
+                               <option>Mrs</option>
+                           </select>
+                     </div>
+               
+                     <!-- <div >
+                         <input type="text" ngModel id="lastName" placeholder="Last Name" class="form-control">
+                     </div> -->
+                 </div>
+                 <div class="form-group">
+                  <label for="gen">Gender<span>*</span></label>
+                  <div>
+                      <div class="row">
+                          <div id="gen">
+                              <label class="radio-inline">
+                                  <input type="radio" id="female" name="gender" value="Female" ngModel required>Female
+                              </label>
+                          </div>
+                          <div id="gen">
+                              <label class="radio-inline">
+                                  <input type="radio" id="maleRadio" name="gender" value="Male" ngModel required>Male
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                  <div class="form-group">
+                     <label for="email">Email Address<span>*</span></label>
+                     <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email"
+                        required>
+                  </div>
+                  <div class="form-group">
+                     <label for="dob">DOB</label>
+                     <input type="date" ngModel name="dob" class="form-control" id="dob" placeholder="yyyy-mm-dd" 
+                        >
+                  </div>
+                  <div class="form-group">
+                     <label for="address">Address</label>
+                     <input type="text" ngModel name="address" class="form-control" id="address"
+                        placeholder="Address" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="address">Country/State/City</label>
+                     <input type="text" ngModel name="country" class="form-control" id="country"
+                        placeholder="Country" required>
+                        <input type="text" ngModel name="state" class="form-control" id="state"
+                        placeholder="State" required>
+                        <input type="text" ngModel name="city" class="form-control" id="city"
+                        placeholder="City" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="pincode">Pincode<span>*</span></label>
+                     <input type="text" ngModel name="pinCode" class="form-control" id="pin" placeholder="pincode"
+                        required>
+                  </div>
+                  <div class="form-group">
+                     <label for="phone">Phone</label>
+                     <input type="text" ngModel name="code" class="form-control" id="code" placeholder="Code"
+                        required>
+                     <input type="text" ngModel name="phoneNo" class="form-control" id="phone" placeholder="Phone"
+                        required>
+                  </div>
+                  <div class="form-group" name="experience">
+                     <label for="phoneNumber">Experience/Title</label>
+                     <div>
+                         <div class="input-group" id="exp">
+                             <select class=" form-control" ngModel>
+                                 <option>---Select Experience---</option>
+                                 <option>no experience</option>
+                                 <option>>1</option>
+                                 <option>
+                                     <1</option>
+                                 <option>2 years</option>
+                                 <option>3 years</option>
+                                 <option>more than 3</option>
+                             </select>
+                         </div>
+                     </div>
+                         <div class="input-group"  id="pos"  >
+                             <select class="selectpicker form-control" name="position" required>
+                                 <option>---Select Position---</option>
+                                 <option>Not Applied</option>
+                                 <option>Hr</option>
+                                 <option>Software Developer</option>
+                                 <option>Trainee</option>
+                                 <option>Database Administrator</option>
+                                 <option>Tester</option>
+                                 <option>Support System</option>
+                           
+                             </select>
+                         </div>
+                        </div>
+                 <div class="form-group"  name="education" >
+                     <label for="education">Higher Education</label>
+                     <div >
+                        <div class="input-group" id="edu" >
+                           <select class="form-control">
+                               <option>---Select Education---</option>
+                               <option>Bachelor's Degree</option>
+                               <option>Master's Degree</option>
+                               <option>Secondary School</option>
+                               <option>Diploma</option>
+                               <option>Others</option>
+                           </select>
+                       </div>
+                     </div>   
+                 </div>
+                  <div class="modal-footer">
+                     <button type="button" id="add-employee-form" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+                     <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+<!-- Notification for no employees -->
+<div *ngIf="employees?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+   <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">NO EMPLOYEES!</h4>
+      <p>No Employees were found.</p>
+   </div>
+</div>

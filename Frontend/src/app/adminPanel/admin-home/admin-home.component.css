@@ -1,0 +1,80 @@
+.form-control{
+    width: 40% !important;
+    display: inline;
+    margin-right: 2%;
+}
+ span{
+     color: red;
+ }
+
+ label {
+    margin: 1% 0 0 0;
+    width: 100px;
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:35px;
+}
+input[type = text] {
+    height: 40px;
+    float: left;
+    width: 250px !important;
+    margin: 0 1% 2% 0;
+}
+input[type = date] {
+    height: 40px;
+    float: left;
+    width: 250px !important;
+    margin: 0 1% 2% 0;
+}
+input[type = email] {
+    height: 40px;
+    float: left;
+    width: 250px !important;
+    margin: 0 1% 2% 0;
+} 
+#title{
+    width: 50px !important;
+    display: inline;
+}
+#firstName{
+    width: 150px !important;
+    display: inline;
+    float: right;
+  
+}
+#lastName{
+    width: 100px !important;
+    display: inline;
+    float: right;
+}
+#searchName{
+    width: 200px !important;
+}
+
+#code{
+    width: 65px !important;
+}
+#phone{
+    width: 180px !important;
+}
+#country,#state,#city{
+    width: 100px !important;
+}
+#exp{
+    width: 152px !important;
+    float: left;
+}
+#pos{
+    width:157px; 
+}
+#edu{
+    width:250px !important;
+}
+#gen{
+    width:70px;
+    float: left;
+}
+.modal-footer{
+    float: right;
+}

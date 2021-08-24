@@ -1,0 +1,40 @@
+.bg {
+    background: url("/assets/images/background-login.jpg");
+    background-size: cover;
+    height: 100vh;
+    color: white;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  #first{
+    border: 2px solid gray;
+    padding: 60px;
+  }
+  
+  .login {
+    padding: 5rem;
+    border-radius: 1.1rem;
+  }
+  
+  input.ng-invalid.ng-touched {
+    border: 1px solid rgb(240, 14, 14);
+  }
+  
+  .alert {
+    margin-top: 15px;
+  }
+  a{
+    color: white !important;
+
+  }
+  hr{
+    margin-top: 30px ;
+    background-color: whitesmoke;
+  }
+  
+  
